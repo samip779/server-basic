@@ -5,6 +5,8 @@ import cookieParser from "cookie-parser";
 import compress from "compression";
 import helmet from "helmet";
 
+import userRoutes from "./routes/user.routes";
+
 import Template from "./template";
 
 const app = express();
@@ -16,8 +18,10 @@ app.use(compress());
 app.use(helmet());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.status(200).send(Template());
-});
+app.use("/", userRoutes);
+
+// app.get("/", (req, res) => {
+//   res.status(200).send(Template());
+// });
 
 export default app;
